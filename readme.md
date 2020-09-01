@@ -11,11 +11,16 @@ Let me know what you think, if I've missed anything or represented anything inco
 Contents: 
 - C#
 - Dotnet
+- Clean Code (link to clean coders notes)
 - TDD
-- Testing
-- ORM?  
+- Testing => nunit or xunit
+- Architecture / Clean code (document clean coders + tutorial)
+- Design patterns: https://hub.packtpub.com/famous-gang-of-four-design-patterns/
+- Possible sections on web API / domain logic / database layer
+- LINQ => language intergrated query.. fluid language for interacting with collections. IQueriable collections (can be used to define DB tables) - LINQ can be used to query db tables 
+- ORM => broad overview (maps database to object).. entity framework core and entity framework .. nHibernate used in payroll monolith
 - Integration Testing?
-- Tooling?
+- Tooling => Nuget 
 - create-xero-app ... equivilent for dotnet ?
 - Example of a basic app 
 - Getting a project set up
@@ -30,7 +35,7 @@ Useful guides to know what is the current best languages and frameworks:
 
 
 ## C#
-React is the main backend language used at Xero. 
+C# is the main backend language used at Xero. 
 //mention how its typed, and its compiled etc ..
 
 
