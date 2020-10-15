@@ -9,7 +9,7 @@ Let me know what you think, if I've missed anything or represented anything inco
 
 
 Contents: 
-- C# - basic, intermediate, advanced (DONE)
+- C# - basic, intermediate, and advanced concepts (DONE)
 - Clean Code (document clean coders + mosh tutorial) (DONE Mosh, clean coders will take awhile - doing it asynchronously!)
 - C# Unit Testing
 - Hexagonal Architecture
