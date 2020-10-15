@@ -19,6 +19,7 @@ Contents:
 - Dotnet core specific tutorial?: https://docs.microsoft.com/en-us/aspnet/core/fundamentals/?view=aspnetcore-3.1&tabs=linux 
 - Tinytypes (use these in the dotnet core tutorial!): https://techbeacon.com/app-dev-testing/big-benefits-tiny-types-how-make-your-codes-domain-concepts-explicit
 
+
 - Authentication / integration with identity: Security, securing API, CORS? https://docs.microsoft.com/en-us/aspnet/core/security/authentication/?view=aspnetcore-3.1 (Ask Ken if I get stuck)
 - Good API / Good rest design course: Domain-driven design
 - Read / write about these concepts: test doubles (or test deck), YAGNI (you aint gonna need it), command query separation, event sourcing
@@ -30,7 +31,7 @@ Contents:
 - Example of a basic app 
 - Getting a project set up
 
-
+- Reflection as a concent in dotnet?!
 - SQL course using jetbrains DataGrip
 - TDD without mocks: https://www.jamesshore.com/v2/projects/lunch-and-learn
 - 12 factor app: https://12factor.net/
@@ -124,12 +125,12 @@ Unit testing C# Code with NUnit and Moq: Dependency injection, best practices an
 
 https://www.youtube.com/watch?time_continue=4&v=EZ05e7EMOLM&feature=emb_logo
 Notes:
-- only test public methods
-- mock very sparingly - only external dependencies (like db etc)
-- recommends testing behaviors, not classes ? end-to-end testing inside a backend…
-- don’t make everything public in order to test it (it should probably be private unless you need it!)
-- preserve implementation testing by having a thin API (in this case API means public methods in a class - not REST)
-- integration tests are essentially testing that you can talk to the external resource, aka the db, that you’re configured correctly etc (coverage of ports to adapters)
+- Only test public methods
+- Mock very sparingly - only external dependencies (like db etc)
+- Recommends testing behaviors, not classes. Might span multiple classes. End-to-end testing inside a backend… test a functionality. If you're working on a new workflow - this is super important. Requires a good understanding of the whole workflow. If you're just altering an existing behaviour, this might be too difficult to apply.
+- Don’t make everything public in order to test it (it should probably be private unless you need it!)
+- Preserve implementation testing by having a thin API (in this case API means public methods in a class - not REST)
+- Integration tests are essentially testing that you can talk to the external resource, aka the db, that you’re configured correctly etc (coverage of ports to adapters)
 
 
 C# Unit Testing:
@@ -152,3 +153,9 @@ https://medium.com/swlh/hexagonal-architecture-in-java-b980bfc07366
 
 
 ### Design Patterns in C# and .NET
+- Backend applications are usually divided into an API layer, a domain logic layer, and a database layer. 
+  - the API layer is full of controllers (hopefully thin), what the external world interacts with. Think as "black box" as possible
+  - the domain logic layer holds all the logic specifically for how to handle the controllers actions etc
+  - the database layer handles connections to the database
+  - usually the point of entry is from the API layer (maybe called via front end inputs), the API layer then consults the domain logic layer, which then consults the database layer. 
+- 
