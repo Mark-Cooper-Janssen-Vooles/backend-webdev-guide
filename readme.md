@@ -11,9 +11,9 @@ Let me know what you think, if I've missed anything or represented anything inco
 Contents: 
 - C# - basic, intermediate, and advanced concepts (DONE)
 - Clean Code (document clean coders + mosh tutorial) (DONE Mosh, clean coders will take awhile - doing it asynchronously!)
-- C# Unit Testing
-- Hexagonal Architecture
-- Design Patterns in C# and .NET https://www.udemy.com/course/design-patterns-csharp-dotnet/ 
+- C# Unit Testing (DONE)
+- Hexagonal Architecture (DONE)
+- Design Patterns in C# and .NET https://www.udemy.com/course/design-patterns-csharp-dotnet/  (IN PROGRESS)
   - read this: https://hub.packtpub.com/famous-gang-of-four-design-patterns/ 
   - Possible sections on web API / domain logic / database layer? Super general design patterns? Probably covered tutorial
 - Dotnet core specific tutorial?: https://docs.microsoft.com/en-us/aspnet/core/fundamentals/?view=aspnetcore-3.1&tabs=linux 
