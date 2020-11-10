@@ -2,40 +2,40 @@
 This document is intended to cover the aspects required to write back-end production code. It generally follows the format of:
 ````
 //contents section
-  //gist cheatsheet  link
     //github repo example link
+      //readme is a "cheatsheet"
+      //code examples
 ````
 Let me know what you think, if I've missed anything or represented anything incorrectly - happy to hear any feedback!
 
 
 Contents: 
-- C# - basic, intermediate, and advanced concepts (DONE)
-- Clean Code (document clean coders + mosh tutorial) (DONE Mosh, clean coders will take awhile - doing it asynchronously!)
+- C# - basic, intermediate, and advanced concepts (DONE) :heavy_check_mark:
+- Clean Code (DONE)
 - C# Unit Testing (DONE)
 - Hexagonal Architecture (DONE)
-- Design Patterns in C# and .NET https://www.udemy.com/course/design-patterns-csharp-dotnet/  (IN PROGRESS)
-  - read this: https://hub.packtpub.com/famous-gang-of-four-design-patterns/ 
-  - Possible sections on web API / domain logic / database layer? Super general design patterns? Probably covered tutorial
-- Dotnet core specific tutorial?: https://docs.microsoft.com/en-us/aspnet/core/fundamentals/?view=aspnetcore-3.1&tabs=linux 
-- Tinytypes (use these in the dotnet core tutorial!): https://techbeacon.com/app-dev-testing/big-benefits-tiny-types-how-make-your-codes-domain-concepts-explicit
+- Design Patterns in C# and .NET (DONE)
+- Dotnet core specific tutorial: https://docs.microsoft.com/en-us/aspnet/core/fundamentals/?view=aspnetcore-3.1&tabs=linux (PROGRESS)
+- Dependency injection course
+- create-xero-app ... equivilent for dotnet: https://github.dev.xero.com/oliver-cardwell/HelloKubernetes
+- Use events/delegates for something in this c# app
+- Example of a basic app 
+- Getting a project set up
 
 
+Future Ideas of study: 
+- https://www.pluralsight.com/paths/aspnet-core 
 - Authentication / integration with identity: Security, securing API, CORS? https://docs.microsoft.com/en-us/aspnet/core/security/authentication/?view=aspnetcore-3.1 (Ask Ken if I get stuck)
 - Good API / Good rest design course: Domain-driven design
 - Read / write about these concepts: test doubles (or test deck), YAGNI (you aint gonna need it), command query separation, event sourcing
   - CQRS: https://microservices.io/patterns/data/event-sourcing.html
-
-
-- create-xero-app ... equivilent for dotnet? https://github.dev.xero.com/oliver-cardwell/HelloKubernetes
-- Use events/delegates for something in this c# app... super fuzzy on them
-- Example of a basic app 
-- Getting a project set up
-
-- Reflection as a concent in dotnet?!
-- SQL course using jetbrains DataGrip
+- Databases / SQL stuff 
+- Reflection as a concept in dotnet?!
 - TDD without mocks: https://www.jamesshore.com/v2/projects/lunch-and-learn
 - 12 factor app: https://12factor.net/
-​
+​- Threading
+- Tinytypes (use these in the dotnet core tutorial!): https://techbeacon.com/app-dev-testing/big-benefits-tiny-types-how-make-your-codes-domain-concepts-explicit
+
 
 more content ideas: https://github.com/kamranahmedse/developer-roadmap
 
@@ -52,10 +52,6 @@ Useful guides to know what is the current best languages and frameworks:
 - https://www.thoughtworks.com/radar/languages-and-frameworks  
 - https://techradar.xero-support.com
 ​
-
-TO DO NEXT:
-CI/CD focused rotation? infrasturcture as code? 
-
 
 ---
 
@@ -152,10 +148,18 @@ https://medium.com/swlh/hexagonal-architecture-in-java-b980bfc07366
 ---
 
 
-### Design Patterns in C# and .NET
+## Design Patterns in C# and .NET
 - Backend applications are usually divided into an API layer, a domain logic layer, and a database layer. 
   - the API layer is full of controllers (hopefully thin), what the external world interacts with. Think as "black box" as possible
   - the domain logic layer holds all the logic specifically for how to handle the controllers actions etc
   - the database layer handles connections to the database
   - usually the point of entry is from the API layer (maybe called via front end inputs), the API layer then consults the domain logic layer, which then consults the database layer. 
-- 
+
+
+Gang of 4 Design Patterns illistrated in C#: 
+- Ways to deal with different problems from creating objects, structuring classes and behavioural patterns
+- https://github.com/Mark-Cooper-Janssen-Vooles/design-patterns-csharp
+
+
+---
+
