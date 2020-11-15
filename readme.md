@@ -10,17 +10,16 @@ Let me know what you think, if I've missed anything or represented anything inco
 
 
 Contents: 
-- C# - basic, intermediate, and advanced concepts (DONE) :heavy_check_mark:
-- Clean Code (DONE)
-- C# Unit Testing (DONE)
-- Hexagonal Architecture (DONE)
-- Design Patterns in C# and .NET (DONE)
-- Dotnet core specific tutorial: https://docs.microsoft.com/en-us/aspnet/core/fundamentals/?view=aspnetcore-3.1&tabs=linux (PROGRESS)
-- Dependency injection course
-- create-xero-app ... equivilent for dotnet: https://github.dev.xero.com/oliver-cardwell/HelloKubernetes
-- Use events/delegates for something in this c# app
-- Example of a basic app 
-- Getting a project set up
+- C# - basic, intermediate, and advanced concepts :heavy_check_mark:
+- Clean Code :heavy_check_mark:
+- C# Unit Testing :heavy_check_mark:
+- Hexagonal Architecture :heavy_check_mark:
+- Design Patterns in C# and .NET :heavy_check_mark:
+- create-xero-app ... equivilent for dotnet: https://github.dev.xero.com/oliver-cardwell/HelloKubernetes :x:
+- Example of a basic app :heavy_check_mark:
+  - Implement swagger into this app :x:
+  - Implement database into this app => use dynamoDB :x:
+- Getting a project set up :heavy_check_mark:
 
 
 Future Ideas of study: 
@@ -163,3 +162,25 @@ Gang of 4 Design Patterns illistrated in C#:
 
 ---
 
+
+## Example of a basic app
+This app was created using the .net core tutorial below:
+- https://github.dev.xero.com/mark-janssen-vooles/quote-app-backend
+- https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-3.1&tabs=visual-studio
+
+
+---
+
+
+## Getting a project set up
+You can create .net core apps quickily and easily now by running a few simple commands. 
+- ``dotnet new webapi`` was used for the above project, which quickly scaffolds a web api.
+  - in the above tutorial, it ran a series of commands that enable you to scaffold a controller. 
+````
+//note: you may need to play around with versions 
+dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet tool install --global dotnet-aspnet-codegenerator
+dotnet tool update -g Dotnet-aspnet-codegenerator
+dotnet aspnet-codegenerator controller -name TodoItemsController -async -api -m TodoItem -dc TodoContext -outDir Controllers
+````
