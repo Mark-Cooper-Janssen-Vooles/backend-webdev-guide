@@ -169,6 +169,16 @@ This app was created using the .net core tutorial below:
 - https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-3.1&tabs=visual-studio
 
 
+Implementing Swagger into this app:
+- Used this tutorial: https://docs.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-3.1&tabs=visual-studio
+- Launch the app and navigate to ``http://localhost:<port>/swagger/v1/swagger.json``
+- By default the swagger UI can be found at ``http://localhost:<port>/swagger``, note the UI is driven by the generated JSON schema
+- SwaggerUI makes it easy to work with and test APIs - easier to use than postman or curl etc. 
+
+
+Implementing a database into this app:
+- DO AWS stuff first, and use dynamoDB
+
 ---
 
 
