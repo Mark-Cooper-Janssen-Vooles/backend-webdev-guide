@@ -22,23 +22,6 @@ Contents:
 - Getting a project set up :heavy_check_mark:
 
 
-Future Ideas of study: 
-- https://www.pluralsight.com/paths/aspnet-core 
-- Authentication / integration with identity: Security, securing API, CORS? https://docs.microsoft.com/en-us/aspnet/core/security/authentication/?view=aspnetcore-3.1 (Ask Ken if I get stuck)
-- Good API / Good rest design course: Domain-driven design
-- Read / write about these concepts: test doubles (or test deck), YAGNI (you aint gonna need it), command query separation, event sourcing
-  - CQRS: https://microservices.io/patterns/data/event-sourcing.html
-- Databases / SQL stuff 
-- Reflection as a concept in dotnet?!
-- TDD without mocks: https://www.jamesshore.com/v2/projects/lunch-and-learn
-- 12 factor app: https://12factor.net/
-​- Threading
-- Tinytypes (use these in the dotnet core tutorial!): https://techbeacon.com/app-dev-testing/big-benefits-tiny-types-how-make-your-codes-domain-concepts-explicit
-
-
-more content ideas: https://github.com/kamranahmedse/developer-roadmap
-
-
 Books:
 - Clean Code
 - https://www.amazon.com.au/Effective-Engineer-Engineering-Disproportionate-Meaningful/dp/0996128107
