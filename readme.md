@@ -16,7 +16,7 @@ Contents:
 - [C# Unit Testing](#unit-testing-in-c)
 - [Hexagonal Architecture](#hexagonal-architecture)
 - [Design Patterns in C# and .NET](#design-patterns-in-c-and-net)
-- [Apache Kafka](#apache-kafka)
+- [Apache Kafka (eventing)](#apache-kafka)
 - [Example of a basic app](#example-of-a-basic-app)
 - [Getting a project set up](#getting-a-project-set-up)
 
@@ -96,7 +96,21 @@ Gang of 4 Design Patterns illistrated in C#:
 
 ---
 ## Apache Kafka
+Notes taken here from a confluent video: https://www.youtube.com/watch?v=06iRM1Ghr1k
+Confluent is a cloud-native service fo apache kafka
 
+Apache Kafka lets us think about "events" first. 
+An event is an indication in-time that an event took place using a "log", which is an ordered sequence of events. 
+Logs are easy to build at scale. 
+
+Apache Kafka is a system for managing these logs, it calls them "topics". 
+
+A topic is an ordered collection of events stored in a durable way (written to disk + replicated).
+A topic can store data for a short period of time or long period of time. It can be small or enormous. 
+
+Each event represents a thing happening in a business - i.e. a user updates their shipping address.
+
+Microservices can consume a message from a kafka topic, and produce that message off to another kafka topic. 
 
 
 ---
