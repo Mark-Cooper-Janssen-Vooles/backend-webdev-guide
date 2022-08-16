@@ -11,7 +11,7 @@ Most recently updated backend project: https://github.com/Mark-Cooper-Janssen-Vo
 
 
 Contents: 
-- [C# - basic, intermediate, and advanced concepts](#c)
+- [C#](#c)
 - [Clean Code](#clean-code)
 - [C# Unit Testing](#unit-testing-in-c)
 - [Hexagonal Architecture](#hexagonal-architecture)
