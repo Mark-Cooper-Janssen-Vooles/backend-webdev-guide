@@ -6,23 +6,19 @@ This document is intended to cover the aspects required to write back-end produc
       //readme is a "cheatsheet"
       //code examples
 ````
-Let me know what you think, if I've missed anything or represented anything incorrectly - happy to hear any feedback!
-
 
 Most recently updated backend project: https://github.com/Mark-Cooper-Janssen-Vooles/quoteApp
 
 
 Contents: 
-- C# - basic, intermediate, and advanced concepts :heavy_check_mark:
-- Clean Code :heavy_check_mark:
-- C# Unit Testing :heavy_check_mark:
-- Hexagonal Architecture :heavy_check_mark:
-- Design Patterns in C# and .NET :heavy_check_mark:
-- create-xero-app ... equivilent for dotnet: https://github.dev.xero.com/oliver-cardwell/HelloKubernetes :x:
-- Example of a basic app :heavy_check_mark:
-  - Implement swagger into this app :x:
-  - Implement database into this app => use dynamoDB :x:
-- Getting a project set up :heavy_check_mark:
+- [C# - basic, intermediate, and advanced concepts](#c)
+- [Clean Code](#clean-code)
+- [C# Unit Testing](#unit-testing-in-c)
+- [Hexagonal Architecture](#hexagonal-architecture)
+- [Design Patterns in C# and .NET](#design-patterns-in-c-and-net)
+- [Apache Kafka](#apache-kafka)
+- [Example of a basic app](#example-of-a-basic-app)
+- [Getting a project set up](#getting-a-project-set-up)
 
 
 Books:
@@ -33,58 +29,16 @@ Books:
 - https://www.amazon.com.au/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215
 
 
-Useful guides to know what is the current best languages and frameworks:
-- https://www.thoughtworks.com/radar/languages-and-frameworks  
-- https://techradar.xero-support.com
-​
-
 ---
-
-
 ## C#
-C# is the main backend language used at Xero. 
-
-
-C# beginners
-- Intro to c# and .NET
-- Primitive Types and Expressions
-- Non-Primitive Types
-- Control Flow
-- Arrays and Lists
-- Working with dates
-- Working with text
-- Working with files
-- Debugging apps
-
-
-C# intermediate
-- Classes
-- Association between classes
-- Inheritance - second pillar of OOP
-- Polymorphism - third pillar of OOP
-- Interfaces
-
-
-C# advanced
-- Generics
-- Delegates
-- Lambda Expressions
-- Events
-- Extension Methods
-- LINQ
-- Nullable Types
-- Dynamic
-- Exception Handling
-- Asynchronous Programming
-
+C# is one of the biggest backend languages used for web development. 
+It is a typed programming language developed by Microsoft that runs on the .NET Framework. 
 
 C# cheat sheet with examples: 
 - https://github.com/Mark-Cooper-Janssen-Vooles/c--learnings
 ​
 
 ---
-
-
 ## Clean Code
 "You know that you're reading clean code, whenever every thing you read is pretty much what you expected"
 
@@ -98,13 +52,11 @@ https://github.com/Mark-Cooper-Janssen-Vooles/clean_code_mosh
 
 
 ---
-
-
 ## Unit Testing in C#
 Unit testing C# Code with NUnit and Moq: Dependency injection, best practices and pitfalls to avoid. 
 
-
 https://www.youtube.com/watch?time_continue=4&v=EZ05e7EMOLM&feature=emb_logo
+
 Notes:
 - Only test public methods
 - Mock very sparingly - only external dependencies (like db etc)
@@ -119,8 +71,6 @@ https://github.com/Mark-Cooper-Janssen-Vooles/UnitTestingCSharp
 
 
 ---
-
-
 ## Hexagonal Architecture 
 https://medium.com/swlh/hexagonal-architecture-in-java-b980bfc07366 
 
@@ -131,8 +81,6 @@ https://medium.com/swlh/hexagonal-architecture-in-java-b980bfc07366
 
 
 ---
-
-
 ## Design Patterns in C# and .NET
 - Backend applications are usually divided into an API layer, a domain logic layer, and a database layer. 
   - the API layer is full of controllers (hopefully thin), what the external world interacts with. Think as "black box" as possible
@@ -147,11 +95,13 @@ Gang of 4 Design Patterns illistrated in C#:
 
 
 ---
+## Apache Kafka
 
 
+
+---
 ## Example of a basic app
 This app was created using the .net core tutorial below:
-- https://github.dev.xero.com/mark-janssen-vooles/quote-app-backend
 - https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-3.1&tabs=visual-studio
 
 
@@ -162,12 +112,7 @@ Implementing Swagger into this app:
 - SwaggerUI makes it easy to work with and test APIs - easier to use than postman or curl etc. 
 
 
-Implementing a database into this app:
-- DO AWS stuff first, and use dynamoDB
-
 ---
-
-
 ## Getting a project set up
 You can create .net core apps quickily and easily now by running a few simple commands. 
 - ``dotnet new webapi`` was used for the above project, which quickly scaffolds a web api.
