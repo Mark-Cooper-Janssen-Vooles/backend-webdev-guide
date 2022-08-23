@@ -106,6 +106,37 @@ Recommended tech stack:
 - UTF-8 encoding to be used for all responses
 - HTTP Request methods and common method properties to adhere to RFC 7231 standard
   - https://www.rfc-editor.org/rfc/rfc7231#section-4
+  - GET requests are used to read either a single or a collection resource
+    - GET requests for individual resources will usually generate a 404 if the resource does not exist
+    - GET requests for collection resources may return either 200 (if the collection is empty) or 404 (if the collection is missing)
+    - GET requests must NOT have a request body payload
+  - GET with body
+    - APIs sometimes face the problem, that they have to provide extensive structured request information with GET, that may conflict with the size limits of clients, load-balancers, and servers. As we require APIs to be standard conform (body in GET must be ignored on server side), API designers have to check the following two options:
+      - GET with URL encoded query parameters: when it is possible to encode the request information in query parameters, respecting the usual size limits of clients, gateways, and servers, this should be the first choice. The request information can either be provided distributed to multiple query parameters or a single structured URL encoded string.
+      - POST with body content: when a GET with URL encoded query parameters is not possible, a POST with body content must be used. In this case the endpoint must be documented with the hint GET with Body to transport the GET semantic of this call.
+  - PUT requests are used to update (in rare cases to create) entire resources - single or collection resources
+    - PUT requests are usually applied to single resources, and not to collection resources, as this would imply replacing the entire collection
+    - PUT requests are usually robust against non-existence of resources by implicitly creating before updating
+    - on successful PUT requests, the server will replace the entire resource addressed by the URL with the representation passed in the payload (subsequent reads will deliver the same payload)
+    - successful PUT requests will usually generate 200 or 204 (if the resource was updated – with or without actual content returned), and {201} (if the resource was created)
+  - POST requests are idomatically used to create single resources on a collection resource endpoint
+    - on a successful POST request, the server will create one or multiple new resources and provide their URI/URLs in the response 
+    - successful POST requests will usually generate 200 (of resources have been updated), 201 (if resources have been created), 202 (if the request was accepted but has not been finished yet), and exceptionally 204 with Location header (if the actual resource is not returned).
+  - PATCH requests are used to update parts of single resources, i.e. where only a specific subset of resource fields should be replaced.
+    - PATCH requests are usually applied to single resources as patching entire collection is challenging
+    - PATCH requests are usually not robust against non-existence of resource instances
+    - on successful PATCH requests, the server will update parts of the resource addressed by the URL as defined by the change request in the payload
+    - successful PATCH requests will usually generate 200 or 204 (if resources have been updated with or without updated content returned)
+    - use PUT with complete objects to update a resource as long as feasible (i.e. do not use PATCH at all if you can get away with it)
+  - DELETE requests are used to delete resources 
+    - DELETE requests are usually applied to single resources, not on collection resources, as this would imply deleting the entire collection
+    - successful DELETE requests will usually generate 200 (if the deleted resource is returned) or 204 (if no content is returned)
+    - failed DELETE requests will usually generate 404 (if the resource cannot be found) or 410 (if the resource was already deleted before)
+  - HEAD requests are used to retrieve the header information of single resources and resource collections
+    - HEAD has exactly the same semantics as GET, but returns headers only (no body)
+  - OPTIONS requests are used to inspect the available operations (HTTP methods) of a given endpoint 
+    - OPTIONS responses are usually either return a comma separated list of methods in the Allow header or as a structured list of link templates
+    - OPTIONS is rarely implemented
 - HTTP POST and PATCH methods to be idempotent (i.e. an identical request can be made once or several times in a row with the same effect - i.e. pressing the on/off buttons on a trains multiple times will be the same as pressing it once)
 - All responses to use the most appropriate and specific standard HTTP status code defined in RFC 7231 and RFC 6585 stabdards 
   - https://www.rfc-editor.org/rfc/rfc7231#section-6
