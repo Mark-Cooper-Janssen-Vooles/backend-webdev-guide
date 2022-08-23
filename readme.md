@@ -23,8 +23,9 @@ Contents:
   - [Data representation and localisation](#data-representation-and-localisation)
   - [Deploy and Release](#deploy-and-release)
   - [Operating and Monitoring](#operating-and-monitoring)
-- [Hexagonal Architecture](#hexagonal-architecture)
+- [SOLID design principles](#solid-design-principles)
 - [Design Patterns in C# and .NET](#design-patterns-in-c-and-net)
+- [Hexagonal Architecture](#hexagonal-architecture)
 - [Apache Kafka (eventing)](#apache-kafka)
 - [Example of a basic app](#example-of-a-basic-app)
 - [Getting a project set up](#getting-a-project-set-up)
@@ -199,15 +200,29 @@ Recommended tech stack:
 - Client requests should be rate limited using HTTP Status Code 429 with headers 
 - Inbound and outbound requests should be logged 
 
-
 ---
-## Hexagonal Architecture 
-https://medium.com/swlh/hexagonal-architecture-in-java-b980bfc07366 
+## SOLID Design Principles
+SOLID is frequently referenced in design pattern literature and comprises of 5 principles
 
+### Single Responsibility
+- Every class, module or function in a program should have one responsibility / purpose
 
-- The purpose of hexagonal architecture is to avoid known structural pitfalls in software design, such as the pollution of UI code with business logic or undesired dependencies between layers. 
-- It aims at creating loosely coupled components that can be connected to software environments using "ports" and "adapters". A port in C# is an interface, and an adapter is the implementation of that interface. i.e. so they can be "plugged in" and "plugged out".
-- This makes components (UI, DB, anything that plugs into an adapter) replacable at any level and facilities testing of the single parts
+### Open-Closed Principle 
+- A class should be open for extension, but closed for modification 
+- People should be able to extend the functionality of a class, but not by modifying that class directly
+- i.e. generate new classes via inheritance of interfaces, rather than modifying existing classes
+
+### Liskov Substitution Principle 
+- You should be able to substitute a base type for a sub type 
+- i.e. you should only inherit from a class if the child can be used in place of the parent. a box is a rectangle, but a box's width always equals its height so this breaks the Liskov substution principle.
+
+### Interface Segregation Principle
+- Interfaces should be segregated so that nobody implementing your interfaces has to implement functions or properties they don't actually need
+- I.e. you shouldn't need to implement a function or property if you don't actually need it in your class (in this case, change the interface)
+
+### Dependency Inversion Principle
+- High-level parts of the system should not depend on low-level parts of the system directly, they should depend on abstraction
+- You only need to consequently apply the Open/Closed and the Liskov Substitution principles to your code base. After you have done that, your classes also comply with the Dependency Inversion Principle
 
 
 ---
@@ -222,6 +237,16 @@ https://medium.com/swlh/hexagonal-architecture-in-java-b980bfc07366
 Gang of 4 Design Patterns illistrated in C#: 
 - Ways to deal with different problems from creating objects, structuring classes and behavioural patterns
 - https://github.com/Mark-Cooper-Janssen-Vooles/design-patterns-csharp
+
+
+---
+## Hexagonal Architecture 
+https://medium.com/swlh/hexagonal-architecture-in-java-b980bfc07366 
+
+
+- The purpose of hexagonal architecture is to avoid known structural pitfalls in software design, such as the pollution of UI code with business logic or undesired dependencies between layers. 
+- It aims at creating loosely coupled components that can be connected to software environments using "ports" and "adapters". A port in C# is an interface, and an adapter is the implementation of that interface. i.e. so they can be "plugged in" and "plugged out".
+- This makes components (UI, DB, anything that plugs into an adapter) replacable at any level and facilities testing of the single parts
 
 
 ---
