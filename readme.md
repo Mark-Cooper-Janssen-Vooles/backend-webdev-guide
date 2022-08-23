@@ -14,6 +14,15 @@ Contents:
 - [C#](#c)
 - [Clean Code](#clean-code)
 - [C# Unit Testing](#unit-testing-in-c)
+- [REST API Standard](#rest-api-standard)
+  - [API specification](#api-specification)
+  - [Documentation](#documentation)
+  - [HTTP requests and responses](#http-requests-and-responses)
+  - [Authentication and Authorization](#authentication-and-authorization)
+  - [Naming conventions](#naming-conventions)
+  - [Data representation and localisation](#data-representation-and-localisation)
+  - [Deploy and Release](#deploy-and-release)
+  - [Operating and Monitoring](#operating-and-monitoring)
 - [Hexagonal Architecture](#hexagonal-architecture)
 - [Design Patterns in C# and .NET](#design-patterns-in-c-and-net)
 - [Apache Kafka (eventing)](#apache-kafka)
@@ -68,6 +77,96 @@ Notes:
 
 C# Unit Testing:
 https://github.com/Mark-Cooper-Janssen-Vooles/UnitTestingCSharp
+
+
+---
+## REST API Standard
+
+Expectations and requirements for building production ready, high quality REST APIs. 
+
+Recommended tech stack:
+- OpenAPI v3+ Spec
+- C# .net 5+ 
+- Some monitoring system
+- Some authentication system
+- Kubernetes
+
+### Best Practices
+#### API Specification
+- API specification to use OpenAPI v3.0+ Specification format 
+- API specification to contain name, major version, description, contact, servers fields 
+- API specification to be a single, self-contained file without external references
+
+#### Documentation
+- Usage examples to be documented in the readme of the API
+- Metered limits, resource limits and hard-limits to be documented in the readme of the API
+
+#### HTTP requests and responses
+- HTTPS to be used for all public or consumer-facing external traffic
+- UTF-8 encoding to be used for all responses
+- HTTP Request methods and common method properties to adhere to RFC 7231 standard
+  - https://www.rfc-editor.org/rfc/rfc7231#section-4
+- HTTP POST and PATCH methods to be idempotent (i.e. an identical request can be made once or several times in a row with the same effect - i.e. pressing the on/off buttons on a trains multiple times will be the same as pressing it once)
+- All responses to use the most appropriate and specific standard HTTP status code defined in RFC 7231 and RFC 6585 stabdards 
+  - https://www.rfc-editor.org/rfc/rfc7231#section-6
+  - https://www.rfc-editor.org/rfc/rfc6585
+- HTTP header fields to be Hyphenated-Pascal-Case format
+- Stack traces must not be returned in HTTP responses 
+
+#### Authentication and Authorization 
+- Endpoints to be secured using an authentication system
+
+#### Naming Conventions
+- API hostnames should follow functional naming schema 
+  - i.e. `<functional-name> => <functional-domain>- <functional-component>`
+  - `<functional-domain> => managed functional group of components`
+  - `<functional-component> => name of owning functional component`
+  - e.g. identify-config.somedomain.com
+- API basepath to be set for the root ('/') level
+- URL paths to not use trailing slashes
+- URL path segments to be lowercase words separated with hyphens 
+- Resources to be represented with nouns 
+- Resources to use domain-specific names (eg: 'sales-order' rather than 'order')
+- Resource endpoints to use plural resource forms (eg: /invoices, /sales-orders)
+- Resources and sub-resources in path segments to be hierarchically identified (eg: /invoices/{id}/attachments)
+- Sub-resources should be limited to three levels 
+- HTTP verbs should not be used in a URL path 
+
+#### Data representation and localisation
+- Data-interchange to be in RFC7159 JSON format 
+  - https://www.rfc-editor.org/rfc/rfc7159
+- Numeric values in JSON to be represented as numbers, not strings
+- Objects storing monetary values to be using fixed-precision/decimal types instead of floating-point 
+- Currency codes to be represented as upper case ISO4217 format 
+  - https://www.iso.org/iso-4217-currency-codes.html
+- Date and Time values to be represented as “YYYY-MM-DDThh:mm:ss[.sss]Z” format strings
+- Boolean property values must not be null
+- Absent and null values should be handled identically 
+- Empty arrays to be represented as "[]" rather than null values
+- Array names should be pluralised 
+- Enumeration type values should be represented as strings 
+- Conventional query-parameter names to be used for request filtering 
+  - i.e. `q` , `sort`, `fields`, `embed`
+  - i.e. `/sales-orders?sort=+id`
+- The number of items returned by a collection must be limited and paginated 
+- Locales should be represented using IETF BCP 47 Unicode format 
+  - https://www.unicode.org/reports/tr35/tr35.html
+  - the syntax is `"language[-script][-region][-u-extensions]"`.
+  - For example, `en-NZ`, `mi-NZ`
+- Errors to be represented in Problem JSON (RFC 7807) format, providing error 'type' (URI) and optionally 'title', 'status', 'detail' and other information fields 
+  - https://www.rfc-editor.org/rfc/rfc7807
+- Content-language header to be supplied in all responses containing localised text (ideally this is in the frontend though)
+
+#### Deploy and Release 
+- API service containers to be hosted on Kubernetes ideally 
+- Breaking changes to Production APIs should be avoided
+  - if unavoidable, notice must be given to clients 6 months in advance 
+
+#### Operating and Monitoring 
+- A `/ping` endpoint must be exposed 
+- A `/healthcheck` endpoint must be exposed 
+- Client requests should be rate limited using HTTP Status Code 429 with headers 
+- Inbound and outbound requests should be logged 
 
 
 ---
