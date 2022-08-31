@@ -27,6 +27,7 @@ Contents:
 - [Design Patterns in C# and .NET](#design-patterns-in-c-and-net)
 - [Hexagonal Architecture](#hexagonal-architecture)
 - [Apache Kafka (eventing)](#apache-kafka)
+- [Terraform](#terraform)
 - [Example of a basic app](#example-of-a-basic-app)
 - [Getting a project set up](#getting-a-project-set-up)
 
