@@ -202,7 +202,9 @@ Recommended tech stack:
 
 ---
 ## SOLID Design Principles
-SOLID is frequently referenced in design pattern literature and comprises of 5 principles
+SOLID is frequently referenced in design pattern literature and comprises of 5 principles.
+
+Code examples found here: https://github.com/Mark-Cooper-Janssen-Vooles/design-patterns-csharp#SOLID-Design-Principles
 
 ### Single Responsibility
 - Every class, module or function in a program should have one responsibility / purpose
@@ -266,6 +268,12 @@ A topic can store data for a short period of time or long period of time. It can
 Each event represents a thing happening in a business - i.e. a user updates their shipping address.
 
 Microservices can consume a message from a kafka topic, and produce that message off to another kafka topic. 
+
+
+---
+## Terraform 
+
+
 
 
 ---
