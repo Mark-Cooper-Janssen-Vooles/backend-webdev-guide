@@ -273,7 +273,46 @@ Microservices can consume a message from a kafka topic, and produce that message
 ---
 ## Terraform 
 
+An open-source infrastructure as code software tool created by HashiCorp. 
+A tool for doing provisioning on day 1 and day 2+
 
+Terraform takes an infrastructure as code approach - you can declaratively define in tf config files what you want your infrastructure to look like. 
+i.e. you might have a VPC, a SG, a VM and a load balancer. 
+
+Terraform commands:
+- Refresh => reconciles what it thinks terraform looks like (TF view) with the real world (whats actually running in AWS)
+- Plan => reconciles the real world, what is actually running, with our desired config 
+- Apply => starts with plan and then executes this against the real world, it also works out what is the right order this needs to be done in
+
+The above gives us a way to do our day 1 infrastructure 
+
+Day 2 we might want to add a DNS, a CDN, a monitoring system. So we change our TF config, and then re-run the same commands: 
+- refresh (TF realises we have existing resources, but also we don't have some)
+- plan (TF says existing resources don't need to change, but we must add 3 new resources)
+- apply (it adds the 3 new things)
+
+Day 1 is the same as day 2, day 2 is "forever". 
+Day N is when we want to get rid of our TF. It has the command: 
+- Destroy (destroys all the resources associated with this application)
+
+
+How does terraform work? 
+TF Config (provided by the user) => CORE
+real world State (provided by TF) => CORE
+
+TF supports many providers (i.e. AWS, azure, other "infrastructure as a service" or IAAS). It can also manage PaaS, SaaS.
+
+Terraform is used in teams:
+- Individual contributer writes TF locally => checks the plan, if that looks good, runs apply. 
+- If multiple contributers working on TF, similar to how we might use github, we use "terraform enterprise". First we have a version control system (i.e. github) and then we have the "terraform enterprise" off of that.
+  - this manages the state and makes sure updates are sequential
+  - we can store variables and encrypt them here
+
+Terraform has a concept of "modules" which is what you'd serve a developer, where as the early operator / devops team might create the full terraform config file, a 'module' is more of a black box of only things we need to know about. These are served from a registry. We can run private registries too.
+
+
+More information and examples can be found here: 
+https://github.com/Mark-Cooper-Janssen-Vooles/terraform-learnings 
 
 
 ---
