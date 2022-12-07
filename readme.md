@@ -7,9 +7,6 @@ This document is intended to cover the aspects required to write back-end produc
       //code examples
 ````
 
-Most recently updated backend project: https://github.com/Mark-Cooper-Janssen-Vooles/quoteApp
-
-
 Contents: 
 - [C#](#c)
 - [Clean Code](#clean-code)
@@ -23,6 +20,7 @@ Contents:
   - [Data representation and localisation](#data-representation-and-localisation)
   - [Deploy and Release](#deploy-and-release)
   - [Operating and Monitoring](#operating-and-monitoring)
+- [.NET Web API Example](#net-rest-api-thorough-example)
 - [SOLID design principles](#solid-design-principles)
 - [Design Patterns in C# and .NET](#design-patterns-in-c-and-net)
 - [Hexagonal Architecture](#hexagonal-architecture)
@@ -200,6 +198,18 @@ Recommended tech stack:
 - A `/healthcheck` endpoint must be exposed 
 - Client requests should be rate limited using HTTP Status Code 429 with headers 
 - Inbound and outbound requests should be logged 
+
+---
+
+## .NET Rest API (thorough example)
+When building out an API you:
+1. firstly need to understand the domain and create the domain models. This involves thinking thoroughly about the database schema and tables.
+2. From here install entity framework core, set up a local connection to DB, connect it, and seed the DB. r
+3. Create the required CRUD controllers to modify the DB Tables. 
+4. Add in validations to the controllers for data sanitisation. 
+5. Add authorisation / authentication. 
+
+Code example found here: https://github.com/Mark-Cooper-Janssen-Vooles/dotnet-web-api
 
 ---
 ## SOLID Design Principles
