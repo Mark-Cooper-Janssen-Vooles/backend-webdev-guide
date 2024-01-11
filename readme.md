@@ -11,6 +11,7 @@ Contents:
 - [C#](#c)
 - [Clean Code](#clean-code)
 - [C# Unit Testing](#unit-testing-in-c)
+- [Database Deepdive]
 - [REST API Standard](#rest-api-standard)
   - [API specification](#api-specification)
   - [Documentation](#documentation)
@@ -78,6 +79,11 @@ Notes:
 C# Unit Testing:
 https://github.com/Mark-Cooper-Janssen-Vooles/UnitTestingCSharp
 
+---
+## Database Deepdive
+Covering topics such as ACID, N+1 Problem, Normalization, Transactions, Failure Modes, profiling performance and scaling databases.
+
+- https://github.com/Mark-Cooper-Janssen-Vooles/databases-deepdive 
 
 ---
 ## REST API Standard
