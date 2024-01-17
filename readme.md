@@ -11,7 +11,7 @@ Contents:
 - [C#](#c)
 - [Clean Code](#clean-code)
 - [C# Unit Testing](#unit-testing-in-c)
-- [Database Deepdive]
+- [Database Deepdive](#database-deepdive)
 - [REST API Standard](#rest-api-standard)
   - [API specification](#api-specification)
   - [Documentation](#documentation)
@@ -21,6 +21,8 @@ Contents:
   - [Data representation and localisation](#data-representation-and-localisation)
   - [Deploy and Release](#deploy-and-release)
   - [Operating and Monitoring](#operating-and-monitoring)
+  - [Hateoas](#hateoas)
+  - [OpenAPI spec](#openapi-spec)
 - [.NET Web API Example](#net-rest-api-thorough-example)
 - [SOLID design principles](#solid-design-principles)
 - [Design Patterns in C# and .NET](#design-patterns-in-c-and-net)
@@ -204,6 +206,16 @@ Recommended tech stack:
 - A `/healthcheck` endpoint must be exposed 
 - Client requests should be rate limited using HTTP Status Code 429 with headers 
 - Inbound and outbound requests should be logged 
+
+#### Hateoas 
+HATEOAS is an acronym for Hypermedia As The Engine Of Application State - its the concept that when sending information over a RESTful API the document received should contain everything the client needs in order to parse and use the data 
+  - i.e. they don't have to contact any other endpoint not explicitly mentioned within the Document 
+
+#### OpenAPI Spec
+OpenAPI Specification (OAS) defines a standard, language-agonostic interface to RESTful APIs which allow both humans and computers to discover and understand what the service does without access to the source code etc. 
+- When defined, the consumer can understand and interact with the remote service with a minimal amount of implementation logic 
+- the openAPI definition can be used by documentation generation tools to display the API
+- i.e. in c# .net it uses swagger: https://swagger.io/specification/
 
 ---
 
