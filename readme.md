@@ -24,6 +24,7 @@ Contents:
   - [Hateoas](#hateoas)
   - [OpenAPI spec](#openapi-spec)
 - [.NET Web API Example](#net-rest-api-thorough-example)
+- [Caching](#caching)
 - [SOLID design principles](#solid-design-principles)
 - [Design Patterns in C# and .NET](#design-patterns-in-c-and-net)
 - [Hexagonal Architecture](#hexagonal-architecture)
@@ -228,6 +229,84 @@ When building out an API you:
 5. Add authorisation / authentication. 
 
 Code example found here: https://github.com/Mark-Cooper-Janssen-Vooles/dotnet-web-api
+
+---
+## Caching
+Caching is a technique of sorting frequently used data or information in a local memory, for a certain time period. i.e. The next time the client requests the same information, instead of retrieving the information from the database, it will give the information from local memory. 
+- Caching improves the performance by reducing the processing burden
+
+### Client Side 
+Client side caching is the storage of network data to a local cache for future re-use. After the application fetches network data, it stores that resource in a local cache. Once a resource has been cached, the browser uses the cache on future requests for that resource to boost performance. 
+- We have HTTP caching headers to achieve this 
+  - When the request from the browser comes to client, i.e. for `/some-image.png` we will check the cache to see if we have the content, if not then we go to the server to fetch it
+- enables much lower response times 
+- Reduces server bandwith usage / loads 
+
+- Terminology:
+  - Client (our browser)
+  - Origin server (where the content comes from)
+  - Web Cache
+    - Stale content (old cache data)
+    - Fresh Content
+    - Cache validation (fetch new data from origin)
+    - Cache invalidation (remove stale content)
+
+- How does content get cached?
+  - HTTP headers play the key role in caching
+    - client requests something from the server
+    - when the server sends respond to the client, it checks the validation headers (if there are any) and then it sends the HTTP headers in its response
+    - these HTTP headers are used by the browser/client to cache the response 
+    - page is reloaded, then when the client requests something from the server, its sending validation headers
+
+- Caching headers / HTTP headers
+  - `Expires`
+    - depreciated
+    - absolute expiry date (how long it can be cached)
+    - can't be more than a year 
+    - clocks have to be in sync
+  - `Pragma`
+    - no-cache value - depreciated
+  - `cache-control` (or content-control?)
+    - this is the preferred way, expires and pragma are old
+    - cache-control is a multi value header 
+      - private - only cached in the client (only cached in the browser)
+      - public - can be cached in proxies
+      - no-store - can't be cached anywhere 
+      - no-cache - content can be cached but must require validation from the server
+      - max-age - cached for the given number of seconds 
+      - s-max-age - caching duration for the shared places (proxies)
+        - if you have both max-age and s-max-age it uses both (max-age for client, s-max-age for proxies)
+      - must-revalidate - if the server is not reachable, the client will serve cache content if it is stale. if you have must-revalidate, it will not use the cached content until it has validated
+      - proxy-revalidate - similar to above
+    - you can mix the values for the cache control values however you want
+- Validator headers
+  - these are used by the client to make sure the cache is still usable
+  - `etag` - server normally sends an etag header in the response. client uses this etag to make a request to the server to check if the content has been changed
+    - client sends request to server for an image, server responds with: 
+    ````
+    Cache-Control: max-age=3600 Public
+    ETag: "j82sdlkjsdlfjlsdjk"
+    ````
+    - now client uses the image for 3600 seconds 
+    - after 3600 seconds, client sends request to the server with `If-None-Match: "j82sdlkjsdlfjlsdjk"` (aka the origionally ETag value)
+    - the server then matches the etag with the resource with the new resource. if it doesn't match, the server responds with a new image / etag. if it does match, the server responds with "304" (not modified) and the client renews the cache for another 3600 seconds 
+    - there are two types of etags "strong" and "weak", weak are prefixed with w/ - not as strict
+  - `if-none-match`
+  - `last-modified` - indicates date and time when last modified
+    - if stale (comes from server)
+  - `if-modified-since` - when last-modified is stale, client makes the request with `If-Modified-Since` and the last modified date, which is used by the server to return 304 (not modified) or the new response
+  - if both ETag and Last-modified are present, client sends both params and the server checks both values to return 304 or the new content. 
+
+Types of caching techniques:
+  - Light caching (e.g. html)
+    - `cache-control: private, no-cache`
+  - Agressive caching (e.g. CSS, JS, images)
+    - `cache-control: public, max-age: 31556926` (i.e. images wont change for a year)
+    - you may have a 'finger printed file name' e.g. style.ju2i90.css - i.e. the build system with generate a different file name for each build, so when the html sees it is different in name it will request it fresh
+
+Debugging the caching headers?
+- curl -I http://some-url.com (gives you caching headers)
+- or can just look in the dev tools 
 
 ---
 ## SOLID Design Principles
