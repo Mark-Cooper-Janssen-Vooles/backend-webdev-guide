@@ -25,6 +25,8 @@ Contents:
   - [OpenAPI spec](#openapi-spec)
 - [.NET Web API Example](#net-rest-api-thorough-example)
 - [Caching](#caching)
+  - [Client Side](#client-side)
+  - [Server Side](#server-side)
 - [SOLID design principles](#solid-design-principles)
 - [Design Patterns in C# and .NET](#design-patterns-in-c-and-net)
 - [Hexagonal Architecture](#hexagonal-architecture)
@@ -307,6 +309,25 @@ Types of caching techniques:
 Debugging the caching headers?
 - curl -I http://some-url.com (gives you caching headers)
 - or can just look in the dev tools 
+
+### Server Side 
+- (not as useful / common as client side or CDN's)
+- Server-side caching temporarily stores web files and data on the origin server to reuse later.
+- When the user firsts request for the webpage, the website goes under the normal process of retrieving data from the server and generates or constructs the webpage of the website. After the request has happened and the response has been sent back, the server copies the webpage and stores it as a cache.
+- Next time the user revisits the website, it loads the already saved or cached copy of the webpage, thus making it faster.
+- This looks something like: 
+````
+1st request: browser => caching server => origin server
+             browser <= caching server <= origin server
+
+2nd request: browser => caching server
+             browser <= caching server
+````
+
+- Types of server-side caching:
+  - object caching - storing database queries, so it is easier to access the data next time the request is made
+  - CDN caching - Content delivery network caching is a group of servers around the globe to provide the content from the nearest area to the user
+  - 
 
 ---
 ## SOLID Design Principles
