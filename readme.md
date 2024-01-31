@@ -11,6 +11,7 @@ Contents:
 - [C#](#c)
 - [Clean Code](#clean-code)
 - [C# Unit Testing](#unit-testing-in-c)
+- [Integration Testing](#integration-testing)
 - [Database Deepdive](#database-deepdive)
 - [REST API Standard](#rest-api-standard)
   - [API specification](#api-specification)
@@ -83,6 +84,15 @@ Notes:
 
 C# Unit Testing:
 https://github.com/Mark-Cooper-Janssen-Vooles/UnitTestingCSharp
+
+---
+## Integration Testing
+Integration testing is defined as a type of testing where software modules are integrated logically and tested as a group. 
+- The purpose of this level of testing is to expose defects in the interaction between these modules when they are integrated. 
+- It focuses mainly on the interfaces and flow of data / information between the modules - the integrating links 
+
+C# integration testing: 
+https://github.com/Mark-Cooper-Janssen-Vooles/integration-testing-c- 
 
 ---
 ## Database Deepdive
