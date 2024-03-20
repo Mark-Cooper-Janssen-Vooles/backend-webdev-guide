@@ -466,6 +466,7 @@ Pros:
 - Can support multiple technology stacks and be upgraded indepenently
 
 Learn more:
+- Building microservices-based systems in AWS with .NET and c#: https://github.com/Mark-Cooper-Janssen-Vooles/microservices-aws-dotnet
 - https://microservices.io/patterns/microservices.html
 
 ---
