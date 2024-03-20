@@ -453,6 +453,20 @@ Learn more:
 ---
 
 ## Microservices 
+- Microservice architecture is a pattern in which highly cohesive, loosely coupled services are separately developed, maintained and deployed.
+- Each component handles an individual function, and when combined, the application handles an overall business function. 
+
+Cons:
+- Might be potentially inefficient (requires communication between projects)
+- some operations might need to be implemented using complex eventually consistent transaction management since loose coupling requires each service to have its own DB
+Pros:
+- Each subdomain is easier to understand and maintain
+- Team can develop, test and deploy their service independently of other teams (more autonomy)
+- Fast deployment pipeline - each service is fast to test since its relatively small and can be deployed independently
+- Can support multiple technology stacks and be upgraded indepenently
+
+Learn more:
+- https://microservices.io/patterns/microservices.html
 
 ---
 
