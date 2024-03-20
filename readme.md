@@ -28,12 +28,18 @@ Contents:
 - [Caching](#caching)
   - [Client Side](#client-side)
   - [Server Side](#server-side)
-- [SOLID design principles](#solid-design-principles)
-- [Design Patterns in C# and .NET](#design-patterns-in-c-and-net)
-- [Domain Driven Design](#domain-driven-design)
-- [Event Sourcing](#event-sourcing)
-- [Hexagonal Architecture](#hexagonal-architecture)
-- [Apache Kafka (eventing)](#apache-kafka)
+- Software Design and Development Principles
+  - [SOLID design principles](#solid-design-principles)
+  - [Design Patterns in C# and .NET](#design-patterns-in-c-and-net)
+  - [Domain Driven Design](#domain-driven-design)
+  - [Event Sourcing](#event-sourcing)
+  - [Apache Kafka (eventing)](#apache-kafka)
+- Architectural Patterns
+  - [Hexagonal Architecture](#hexagonal-architecture)
+  - [Monolithic Apps](#monolithic-apps)
+  - [Microservices](#microservices)
+  - [Service Mesh](#service-mesh)
+  - [Twelve Factor Apps](#twelve-factor-apps)
 - [Terraform](#terraform)
 - [Example of a basic app](#example-of-a-basic-app)
 - [Getting a project set up](#getting-a-project-set-up)
@@ -405,17 +411,8 @@ More info:
 More info:
 - https://martinfowler.com/eaaDev/EventSourcing.html
 
----
-## Hexagonal Architecture 
-https://medium.com/swlh/hexagonal-architecture-in-java-b980bfc07366 
+--- 
 
-
-- The purpose of hexagonal architecture is to avoid known structural pitfalls in software design, such as the pollution of UI code with business logic or undesired dependencies between layers. 
-- It aims at creating loosely coupled components that can be connected to software environments using "ports" and "adapters". A port in C# is an interface, and an adapter is the implementation of that interface. i.e. so they can be "plugged in" and "plugged out".
-- This makes components (UI, DB, anything that plugs into an adapter) replacable at any level and facilities testing of the single parts
-
-
----
 ## Apache Kafka
 Notes taken here from a confluent video: https://www.youtube.com/watch?v=06iRM1Ghr1k
 Confluent is a cloud-native service fo apache kafka
@@ -433,8 +430,49 @@ Each event represents a thing happening in a business - i.e. a user updates thei
 
 Microservices can consume a message from a kafka topic, and produce that message off to another kafka topic. 
 
+---
+
+## Monolithic Apps 
+- Monolithic architecture is a pattern in which an application handles requests, executes business logic, interacts with the database, and creates the HTML for the front end. This one application does many things. It's inner components are highly coupled and deployed as one unit. 
+- i.e. within a repository you have multiple subdomains i.e. DeliveryManagement, Order Management, Customer Management and each subdomain is owned by a different team working on it. To deploy changes you must deploy the entire repository. 
+
+Pros:
+- Interactions are typically more efficient since all communication between subdomains is local
+- Generally easier to understand and toubleshoot since the logic is all in the one place
+
+Cons:
+- Potentially difficult to understand and maintain due to its size and complexity
+- Less team autonomy since all teams contribute to the same code base and need to coordinate their work more often
+- Deployment pipeline is slow isnce theres a single large app to be built and tested
+- It uses a single technology stack which might not be ideal for all subdomains. Upgrading the tech stack might also be very time consuming.
+
+Learn more:
+- https://microservices.io/patterns/monolithic.html 
+- https://datamify.medium.com/monolithic-architecture-advantages-and-disadvantages-e71a603eec89 
 
 ---
+
+## Microservices 
+
+---
+
+## Service Mesh
+
+---
+
+## Twelve Factor Apps
+
+---
+## Hexagonal Architecture 
+https://medium.com/swlh/hexagonal-architecture-in-java-b980bfc07366 
+
+
+- The purpose of hexagonal architecture is to avoid known structural pitfalls in software design, such as the pollution of UI code with business logic or undesired dependencies between layers. 
+- It aims at creating loosely coupled components that can be connected to software environments using "ports" and "adapters". A port in C# is an interface, and an adapter is the implementation of that interface. i.e. so they can be "plugged in" and "plugged out".
+- This makes components (UI, DB, anything that plugs into an adapter) replacable at any level and facilities testing of the single parts
+
+---
+
 ## Terraform 
 
 An open-source infrastructure as code software tool created by HashiCorp. 
