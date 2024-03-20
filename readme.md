@@ -30,6 +30,7 @@ Contents:
   - [Server Side](#server-side)
 - [SOLID design principles](#solid-design-principles)
 - [Design Patterns in C# and .NET](#design-patterns-in-c-and-net)
+- [Domain Driven Design](#domain-driven-design)
 - [Hexagonal Architecture](#hexagonal-architecture)
 - [Apache Kafka (eventing)](#apache-kafka)
 - [Terraform](#terraform)
@@ -379,6 +380,18 @@ Gang of 4 Design Patterns illistrated in C#:
 - Ways to deal with different problems from creating objects, structuring classes and behavioural patterns
 - https://github.com/Mark-Cooper-Janssen-Vooles/design-patterns-csharp
 
+---
+## Domain-Driven Design
+- DDD is a software design approach focusing on modeling software to match a domain according to input from that domain's experts
+- In OOP it means that the structure and language of software code (class names, class methods, variables) should match the business domain (i.e. for a loan application app: LoanApplication, Customer, and methods such as AcceptOffer and Withdraw)
+  - it advocates for the use of 'ubiquitious language', a common language that is shared by both software developers and business stakeholders
+- It is predicated on the following goals:
+  - Placing the projects primary focus on the core domain and domain logic
+  - Basing complex designs on a model of the domain
+  - Initiating creative collaboration between technical and domain experts to iteratively refine a conceptual model that addresses particular domain problems
+
+More info:
+- https://redis.com/glossary/domain-driven-design-ddd/
 
 ---
 ## Hexagonal Architecture 
