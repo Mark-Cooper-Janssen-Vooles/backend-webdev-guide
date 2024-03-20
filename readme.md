@@ -31,6 +31,7 @@ Contents:
 - [SOLID design principles](#solid-design-principles)
 - [Design Patterns in C# and .NET](#design-patterns-in-c-and-net)
 - [Domain Driven Design](#domain-driven-design)
+- [Event Sourcing](#event-sourcing)
 - [Hexagonal Architecture](#hexagonal-architecture)
 - [Apache Kafka (eventing)](#apache-kafka)
 - [Terraform](#terraform)
@@ -392,6 +393,17 @@ Gang of 4 Design Patterns illistrated in C#:
 
 More info:
 - https://redis.com/glossary/domain-driven-design-ddd/
+
+---
+## Event Sourcing 
+- Event sourcing is a deisgn pattern in which the state of a system is represented as a sequence of events that have occurred over time.
+- Changes to the state of the system are recoded as events and stored in an event store. The current state of the system is derived by replaying the events from the event store. 
+  - Provides a clear and auditable history of all the changes that have occured in the system.
+- Often used in conjunction with other pattenrs such as Command Query Responsibility Segregation (CQRS) and domain-driven design, to build scalable and responsive systems with complex business logic
+- Event sourcing can improve scalability by allowing events to be processed asynchronously and distributed across multiple services or nodes
+
+More info:
+- https://martinfowler.com/eaaDev/EventSourcing.html
 
 ---
 ## Hexagonal Architecture 
