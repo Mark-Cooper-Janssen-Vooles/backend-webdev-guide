@@ -34,12 +34,12 @@ Contents:
   - [Domain Driven Design](#domain-driven-design)
   - [Event Sourcing](#event-sourcing)
   - [Apache Kafka (eventing)](#apache-kafka)
-- Architectural Patterns
   - [Hexagonal Architecture](#hexagonal-architecture)
   - [Monolithic Apps](#monolithic-apps)
   - [Microservices](#microservices)
   - [Service Mesh](#service-mesh)
   - [Twelve Factor Apps](#twelve-factor-apps)
+  - [Visualising software architecture with the C4 model](#visualising-software-architecture-with-the-c4-model)
 - [Terraform](#terraform)
 - [Example of a basic app](#example-of-a-basic-app)
 - [Getting a project set up](#getting-a-project-set-up)
@@ -476,6 +476,66 @@ Learn more:
 ---
 
 ## Twelve Factor Apps
+
+---
+
+## Visualising software architecture with the C4 model
+https://www.youtube.com/watch?v=x2-rSnhpw0g
+
+This model describes four levels of zoom / detail.
+
+- C1 - System Context 
+  - the system + users and system dependencies
+- C2 - Containers
+  - the overall shape of the architecture and technology choices
+- C3 - Components 
+  - logical components and their interactions within a container (i.e. a dotnet payments services app)
+- C4 - Code 
+  - e.g. classes in a dotnet app - component implementation details 
+
+
+- Example of c1 for a banking application:
+  - Personal banking customer 
+    - a customer of the bank with personal bank details
+    - views account balances, makes payments using...
+  - Internet Banking System 
+    - allows customers to view info about bank accounts and make payments 
+    - gets account information from and makes payments using...
+  - Mainframe banking system
+    - Stores all of the core banking info about customers, accounts, transactions, etc
+- In the above case, we might be working on the internet banking system. This C1 diagram shows what system we're working on and the context around it. 
+- Good for a wide range of audiences 
+
+- Example of C2, we pinch to zoom in on the "Internet Banking System" box above
+  - mobile app - Xamarin  
+  - Single page app web app - javascript 
+  - API application (the above two make api calls to this)
+    - this makes api calls to mainframe banking system
+  - DB
+    - stores user registration info, authenntication creds, access logs etc 
+
+- Example of C3: we're in a team working on the API application, so we zoom in on that
+  - Single page app / Mobile app
+    - makes API calls to...
+    1. Sign In Controller 
+      - allows users to sign into the internet banking system
+      - this has a security component which calls a database 
+      - Database stores user registration info 
+    2. Accounts Summary Controller
+      - provides customers with a summary of their bank accounts
+      - uses the mainframe banking system facade 
+      - calls the mainframe banking system (outside this app)
+    3. Reset password controller
+      - allows users to set their password
+      - uses the email component
+      - sends email using an email system (outside this app)
+- if we opened the code base, we should see these things in the code itself.
+
+- Example of C4: doesn't recommend doing level 4...
+  - not worth it. can generate it from the IDEs 
+  - i.e. class diagrams 
+
+
 
 ---
 ## Hexagonal Architecture 
