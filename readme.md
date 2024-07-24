@@ -9,6 +9,7 @@ This document is intended to cover the aspects required to write back-end produc
 
 Contents: 
 - [C#](#c)
+- [Dotnet Deep Dive]
 - [Clean Code](#clean-code)
 - [C# Unit Testing](#unit-testing-in-c)
 - [Integration Testing](#integration-testing)
@@ -61,6 +62,22 @@ It is a typed programming language developed by Microsoft that runs on the .NET 
 C# cheat sheet with examples: 
 - https://github.com/Mark-Cooper-Janssen-Vooles/c--learnings
 ​
+
+---
+## Dotnet Deep Dive
+ASP.NET Core is a cross-platform, high-performance, open-source framework by microsoft. 
+
+With ASP.NET Core, you can:
+- Build web apps and services, Internet of Things (IoT) apps, and mobile backends.
+- Use your favorite development tools on Windows, macOS, and Linux.
+- Deploy to the cloud or on-premises.
+- Run on .NET.
+
+Mostly used for creating backends and BFFs in combination with a frontend framework like React. It can be used for both building APIs and Microservices. 
+
+This section follows the documentation: https://learn.microsoft.com/en-us/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-8.0
+
+More info here: https://github.com/Mark-Cooper-Janssen-Vooles/dotnet-deep-dive 
 
 ---
 ## Clean Code
